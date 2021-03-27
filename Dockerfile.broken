@@ -1,0 +1,10 @@
+FROM rust:1.51 AS builder
+
+WORKDIR /src
+
+RUN cargo init
+COPY Cargo.toml Cargo.lock ./
+RUN cargo build
+
+COPY . .
+RUN cargo build
